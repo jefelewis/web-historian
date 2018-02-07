@@ -15,18 +15,25 @@ exports.handleRequest = function (req, res) {
   //   return;
   // }
 
+  // CSS
+
   if (req.method === 'GET') {
     res.writeHead(200, httpHelpers.headers);
+    console.log('YOU ARE HERE ' + req);
     
+    if (req.url === '/styles.css') {
+      res.writeHead(200, {'Content-type': 'text/css'});
+    }
+
     if (req.url === '/') {
-    console.log('YOU ARE HERE ' + req.url);
       var site = path.resolve(__dirname, './public/index.html');
       fs.readFile(site, function (error, data) {
         if(error){
           throw 'BUMMER! ' + error;
         }
         else {
-          // console.log(data.toString());
+          console.log('SITE is: ' + site);
+          console.log(data.toString());
           res.write(data);
           res.end();
         }
