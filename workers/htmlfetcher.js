@@ -18,6 +18,8 @@ var helpers = require('../helpers/archive-helpers');
 
 // helpers.addUrlToList('www.ronaldmcdonald.com');
 
-helpers.isUrlArchived('www.google.com', function () {
-    console.log('working');
-})
+// helpers.isUrlArchived('www.google.com', function () {
+//     console.log('working');
+// })
+
+helpers.downloadUrls(['www.hi.com', 'www.amazon.com']);

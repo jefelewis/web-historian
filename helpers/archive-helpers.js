@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var http = require('http');
 var _ = require('underscore');
 
 /*
@@ -77,5 +78,10 @@ exports.isUrlArchived = function(url, callback) {
 
 
 exports.downloadUrls = function(urls) {
-
+  urls.forEach(function (url) {
+    var directory = fs.mkdir(exports.paths.archivedSites + '/' + url);
+    http.get(url, function (response) {
+      response.pipe(directory);
+    });
+  });
 };
