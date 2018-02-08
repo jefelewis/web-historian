@@ -22,4 +22,4 @@ var helpers = require('../helpers/archive-helpers');
 //     console.log('working');
 // })
 
-helpers.downloadUrls(['www.hi.com', 'www.amazon.com']);
+// helpers.downloadUrls(['www.bestbuy.com']);

@@ -46,7 +46,7 @@ exports.readListOfUrls = function(callback) {
 
 
 exports.isUrlInList = function(url, callback) {
-    this.readListOfUrls(function (arr) {
+    return exports.readListOfUrls(function (arr) {
       // If URL is in list, return true
       return callback(arr.includes(url));
   })
@@ -54,13 +54,13 @@ exports.isUrlInList = function(url, callback) {
 
 
 exports.addUrlToList = function(url, callback) {
-  this.isUrlInList(url, function (bool) {
+  exports.isUrlInList(url, function (bool) {
     if (!bool) {
       fs.appendFile(exports.paths.list, '\n' + url, function (error) {
         if (error) {
           throw error;
         }
-        callback(bool);
+        callback();
       })
     }
   });
@@ -78,6 +78,7 @@ exports.isUrlArchived = function(url, callback) {
 
 
 exports.downloadUrls = function(urls) {
+  console.log('THE URLS ARE: ', urls)
   urls.forEach(function (url) {
     var directory = fs.mkdir(exports.paths.archivedSites + '/' + url);
     http.get(url, function (response) {
