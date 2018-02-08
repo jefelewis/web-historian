@@ -10,10 +10,14 @@ var helpers = require('../helpers/archive-helpers');
 
 // })
 
-helpers.readListOfUrls(function (urls) {
-});
+// helpers.readListOfUrls(function (urls) {
+// });
 
-helpers.isUrlInList('www.google.com', function () {
-});
+// helpers.isUrlInList('www.google.com', function () {
+// });
 
-helpers.addUrlToList('www.ronaldmcdonald.com');
+// helpers.addUrlToList('www.ronaldmcdonald.com');
+
+helpers.isUrlArchived('www.google.com', function () {
+    console.log('working');
+})

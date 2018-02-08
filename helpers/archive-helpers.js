@@ -12,6 +12,7 @@ var _ = require('underscore');
 exports.paths = {
   siteAssets: path.join(__dirname, '../web/public'),
   archivedSites: path.join(__dirname, '../archives/sites'),
+  testArchives: path.join(__dirname, '../test/testdata/sites'),
   list: path.join(__dirname, '../archives/sites.txt')
 };
 
@@ -66,7 +67,12 @@ exports.addUrlToList = function(url, callback) {
 
 
 exports.isUrlArchived = function(url, callback) {
-  
+  fs.readdir(exports.paths.archivedSites, function (error, files) {
+    if (error) {
+      throw 'Error on isUrlArchived + ' + error;
+    }
+    callback(files.includes(url));
+  });
 };
 
 
