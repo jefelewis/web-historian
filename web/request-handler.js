@@ -21,27 +21,6 @@ var httpHelpers = require('./http-helpers');
 // };
 
 exports.handleRequest = function (req, res) {
-  // console.log(req.method);
-
-  // if (req.url === '/favicon.ico') {
-  //   res.writeHead(200, {'Content-Type': 'image/x-icon'} );
-  //   res.end();
-  //   console.log('favicon requested');
-  //   return;
-  // }
-
-  function getSite(res, path) {
-    fs.readFile(path, function (error, data) {
-      if(error){
-        throw 'BUMMER! ' + error;
-      }
-      else {
-        res.write(data);
-        // res.end();
-      }
-    });
-  }
-
   // If Request Method is GET
   if (req.method === 'GET') {
     if (req.url === '/') {

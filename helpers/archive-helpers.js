@@ -26,12 +26,34 @@ exports.initialize = function(pathsObj) {
 // modularize your code. Keep it clean!
 
 exports.readListOfUrls = function(callback) {
+  // Read sites.txt file
+  fs.readFile(this.paths.list, function(error, data){
+    // If Error exits, throw error
+    if(error){
+      throw error;
+    }
+    // Else, run callback on data
+    else{
+      // Assign the data to an array an split by '\n' (New line)
+      var list = data.toString().split('\n');
+      // Run callback on list
+      callback(list);
+    }
+  })
 };
 
 exports.isUrlInList = function(url, callback) {
+  // 
+  var list = readListOfUrls(url);
+
+  // Return boolean
 };
 
 exports.addUrlToList = function(url, callback) {
+  // Capture URL from Input
+
+  // Write to sites.txt
+
 };
 
 exports.isUrlArchived = function(url, callback) {
