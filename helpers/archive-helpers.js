@@ -27,7 +27,7 @@ exports.initialize = function(pathsObj) {
 // modularize your code. Keep it clean!
 exports.readListOfUrls = function(callback) {
   // Read sites.txt file
-  fs.readFile(this.paths.list, function(error, data){
+  fs.readFile(exports.paths.list, function(error, data){
     // If Error exits, throw error
     if(error){
       throw error;
@@ -52,22 +52,21 @@ exports.isUrlInList = function(url, callback) {
 
 
 exports.addUrlToList = function(url, callback) {
-  // Write to file
-  fs.writeFile(this.paths.list, url, function(error){
-    // If error, throw error
-    if(error){
-      throw error;
+  this.isUrlInList(url, function (bool) {
+    if (!bool) {
+      fs.appendFile(exports.paths.list, '\n' + url, function (error) {
+        if (error) {
+          throw error;
+        }
+        callback(bool);
+      })
     }
-    // URL add success
-    else{
-      console.log("URL Added!");
-    }
-  }
-)};
+  });
+};
 
 
 exports.isUrlArchived = function(url, callback) {
-
+  
 };
 
 

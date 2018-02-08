@@ -11,9 +11,9 @@ var helpers = require('../helpers/archive-helpers');
 // })
 
 helpers.readListOfUrls(function (urls) {
-    console.log(urls);
 });
 
 helpers.isUrlInList('www.google.com', function () {
-    console.log('ISURL ARGS' + arguments);
 });
+
+helpers.addUrlToList('www.ronaldmcdonald.com');
